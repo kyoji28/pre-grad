@@ -1,0 +1,16 @@
+
+# aerial robot third party
+- git:
+    local-name: tello_driver
+    uri: https://github.com/heissereal/tello_driver.git
+    version:7ecf869
+
+- git:
+    local-name: camera_info_manager
+    uri: https://github.com/ros-perception/camera_info_manager_py.git
+    version: 6891ef4
+
+- git:
+    local-name: coral_usb
+    uri: https://github.com/jsk-ros-pkg/coral_usb_ros.git
+    version: ff92ae3
