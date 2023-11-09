@@ -1,0 +1,14 @@
+- git:
+    local-name: tello_driver
+    uri: https://github.com/heissereal/tello_driver.git
+    version: 7ecf869
+
+- git:
+    local-name: camera_info_manager
+    uri: https://github.com/heissereal/camera_info_manager_py
+    version: master
+
+- git:
+    local-name: coral_usb_ros
+    uri: https://github.com/jsk-ros-pkg/coral_usb_ros.git
+    version: master
