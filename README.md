@@ -25,7 +25,7 @@ sudo apt install ros-noetic-camera-info-manager
 sudo apt install ros-noetic-codec-image-transport
 ```
 
-### Install svctools
+### Install vcstool
 ```bash
 sudo apt install python3-vcstool
 ```
@@ -39,8 +39,7 @@ sudo rosdep init
 rosdep update
 git clone https://github.com/heissereal/tello_approaching_human.git
 vcs import < tello_approaching_human/tello_approaching_human.rosinstall --recursive
-cd ~/tello_ws
-rosdep install -y -r --from-paths src --ignore-src --rosdistro $ROS_DISTRO
+rosdep install --from-paths . --ignore-src -y -r
 catkin init
 catkin build
 ```
