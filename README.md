@@ -16,6 +16,20 @@ sudo apt-get install python3-edgetpu
 ```bash
 sudo apt-get install python3-tflite-runtime
 ```
+
+### Install tello_driver dependencies intallation
+```bash
+sudo apt install ros-noetic-cv-bridge
+sudo apt install ros-noetic-image-transport
+sudo apt install ros-noetic-camera-info-manager
+sudo apt install ros-noetic-codec-image-transport
+```
+
+### Install svctools
+```bash
+sudo apt install python3-vcstool
+```
+
 ### Workspace build (noetic)
 ```bash
 source /opt/ros/noetic/setup.bash 
