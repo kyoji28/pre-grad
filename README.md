@@ -20,19 +20,20 @@ sudo apt-get install python3-tflite-runtime
 ```bash
 source /opt/ros/noetic/setup.bash 
 mkdir -p ~/tello_ws/src
-cd ~/tello_ws
+cd ~/tello_ws/src
 sudo rosdep init
 rosdep update
+git clone https://github.com/heissereal/tello_approaching_human.git
 vcs import < tello_approaching_human/tello_approaching_human.rosinstall --recursive
-rosdep install -y -r --from-paths src --ignore-src --rosdistro $ROS_DISTRO
 cd ~/tello_ws
+rosdep install -y -r --from-paths src --ignore-src --rosdistro $ROS_DISTRO
 catkin init
 catkin build
 ```
 ### Model download for coral
 
 ```bash
-source ~/coral_ws/devel/setup.bash
+source ~/tello_ws/devel/setup.bash
 roscd coral_usb/scripts
 rosrun coral_usb download_models.py
 ```
