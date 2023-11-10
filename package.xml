@@ -58,6 +58,10 @@
   <exec_depend>coral_usb</exec_depend>
   <exec_depend>tello_driver</exec_depend>
   <exec_depend>jsk_recognition_msgs</exec_depend>
+  <exec_depend>ros-noetic-cv-bridge</exec_depend>
+  <exec_depend>ros-noetic-image-transport</exec_depend>
+  <exec_depend>ros-noetic-camera-info-manager</exec_depend>
+  <exec_depend>ros-noetic-codec-image-transport</exec_depend>
 
 
   <!-- The export tag contains other, unspecified, tags -->
