@@ -40,6 +40,7 @@ rosdep update
 git clone https://github.com/heissereal/tello_approaching_human.git
 vcs import < tello_approaching_human/tello_approaching_human.rosinstall --recursive
 rosdep install --from-paths . --ignore-src -y -r
+cd ~/tello_ws
 catkin init
 catkin build
 ```
