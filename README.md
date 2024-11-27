@@ -11,24 +11,19 @@ sudo apt-get update
 sudo apt-get install libedgetpu1-legacy-max # Choose <YES> when asked
 sudo apt-get install python3-edgetpu
 ```
-### [Install just the TensorFlow Lite interpreter (Noetic)](https://www.tensorflow.org/lite/guide/python)
+#### [Install just the TensorFlow Lite interpreter (Noetic)](https://www.tensorflow.org/lite/guide/python)
 
 ```bash
 sudo apt-get install python3-tflite-runtime
 ```
 
-### Install vcstool (noetic)
+#### Install vcstool (noetic)
 ```bash
 sudo apt install python3-vcstool
 ```
 
 ### 2.Workspace build (noetic)
 ```bash
-sudo apt install ros-noetic-cv-bridge
-sudo apt install ros-noetic-image-transport
-sudo apt install ros-noetic-camera-info-manager
-sudo apt install ros-noetic-codec-image-transport
-
 source /opt/ros/noetic/setup.bash 
 mkdir -p ~/tello_ws/src
 cd ~/tello_ws/src
@@ -41,7 +36,7 @@ cd ~/tello_ws
 catkin init
 catkin build
 ```
-### Model download for coral
+#### Model download for coral
 
 ```bash
 source ~/tello_ws/devel/setup.bash
