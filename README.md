@@ -1,6 +1,6 @@
 # Tello approaches human and lands on palm
 ## Setup
-### [Edge TPU dependencies installation](https://github.com/jsk-ros-pkg/coral_usb_ros)
+### [1. Edge TPU dependencies installation](https://github.com/jsk-ros-pkg/coral_usb_ros)
 #### [Installing the EdgeTPU runtime](https://coral.withgoogle.com/docs/accelerator/get-started/#1-install-the-edge-tpu-runtime)
 
 ```bash
@@ -22,8 +22,13 @@ sudo apt-get install python3-tflite-runtime
 sudo apt install python3-vcstool
 ```
 
-### Workspace build (noetic)
+### 2.Workspace build (noetic)
 ```bash
+sudo apt install ros-noetic-cv-bridge
+sudo apt install ros-noetic-image-transport
+sudo apt install ros-noetic-camera-info-manager
+sudo apt install ros-noetic-codec-image-transport
+
 source /opt/ros/noetic/setup.bash 
 mkdir -p ~/tello_ws/src
 cd ~/tello_ws/src
