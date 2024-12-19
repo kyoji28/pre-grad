@@ -21,11 +21,15 @@ class Move_to_human():
 
     def skeleton_cb(self,msg):
         self.skeletons = msg
-        for skeleton in self.skeletons.skeletons:
-            self.bone_names = skeleton.bone_names
-            self.bones = skeleton.bones
-            #rospy.loginfo(f"bone_name{self.bone_names}")
-            
+        # if the borns are not found, coral TPU generates not nothing but an "empty" skeleton
+        if self.skeletons.skeletons != []:
+            for skeleton in self.skeletons.skeletons:
+                self.bone_names = skeleton.bone_names
+                self.bones = skeleton.bones
+        else:
+            self.bone_names = []
+            self.bones = []
+
     # search "left wrist" or "right wrist" in self.bone_names
     # search "left shoulder" or "right shoulder" in self.bone_names
     # Task 1 if there are these 4 bones in self.bone_names, get the bone's coordinates in self.bones
