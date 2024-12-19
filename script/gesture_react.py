@@ -38,61 +38,37 @@ class Move_to_human():
     def search_bone(self):
         target_shoulder_bones =  ['left shoulder', 'right shoulder']
         target_wrist_bones = ['left wrist', 'right wrist']
+        #initialize
+        find_shoulder_bone_name = None
+        find_wrist_bone_name = None
         shoulder_bone_coordinates = []
         wrist_bone_coordinates = []
-        # print(len(self.bone_names))
-        # print(len(self.bones))
-        # print(self.bone_names)
-        # print(self.bones)
-        # for i, bone in enumerate(self.bones):
-        #     bone_debug = bone
-        #     bone_name = self.bone_names[i]
-        #     rospy.loginfo(f"bone_raw {bone_debug}")
-        #     rospy.loginfo(f"self.bone_names {bone_name}")
-        # self.bone_names = []
-        # self.bones = []
 
-        if (len(self.bone_names)) < 1:
+        if len(self.bone_names) == 0 or len(self.bones) == 0:
              rospy.loginfo("no bones")
+             return
         else:
             for i, bone_name in enumerate(self.bone_names):
-                find_shoulder_bone_name = None
-                shoulder_bone_coordinates = []
-                find_wrist_bone_name = None
-                wrist_bone_coordinates = []
                 rospy.logerr(f"bone_name {bone_name}")
-                #矢印を基準に分割
                 if '->' in bone_name:
                     parts = bone_name.split('->')
                     start_bone_name = parts[0].strip()
                     end_bone_name = parts[1].strip()
-                    
-                    #ターゲットの骨を探索
-                    # rospy.loginfo(f"bone_raw {self.bones[i]}") 
+
                     bone = self.bones[i]
-                    # rospy.loginfo(f"bone{bone}")
 
                     if start_bone_name in target_wrist_bones:
                         find_wrist_bone_name = start_bone_name
                         wrist_bone_coordinates = bone.start_point
-                    if end_bone_name in target_wrist_bones:
+                    elif end_bone_name in target_wrist_bones:
                         find_wrist_bone_name = end_bone_name
                         wrist_bone_coordinates = bone.end_point
-                        
                     if start_bone_name in target_shoulder_bones:
                         find_shoulder_bone_name = start_bone_name
                         shoulder_bone_coordinates = bone.start_point
-                    if end_bone_name in target_shoulder_bones:
+                    elif end_bone_name in target_shoulder_bones:
                         find_shoulder_bone_name = end_bone_name
                         shoulder_bone_coordinates = bone.end_point
-                    # rospy.loginfo(f"shoulder_bone_name{find_shoulder_bone_name}")
-                    # rospy.loginfo(f"Target shoulder_bone coordinates: {shoulder_bone_coordinates.y}")
-                    
-                    rospy.logwarn(f"wrist_bone_name{find_wrist_bone_name}")
-                    rospy.logwarn(f"Target wrist_bone coordinates: {wrist_bone_coordinates.y}")
-            if wrist_bone_coordinates.y >shoulder_bone_coordinates.y:
-                self.msgs_pub.publish("success!!")
-                print("success")
 
 
     
