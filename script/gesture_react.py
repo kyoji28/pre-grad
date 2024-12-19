@@ -70,8 +70,20 @@ class Move_to_human():
                         find_shoulder_bone_name = end_bone_name
                         shoulder_bone_coordinates = bone.end_point
 
+            if wrist_bone_coordinates and shoulder_bone_coordinates:
+                rospy.loginfo(f"Found wrist bone: {find_wrist_bone_name}, Coordinates: {wrist_bone_coordinates.y}")
+                rospy.loginfo(f"Found shoulder bone: {find_shoulder_bone_name}, Coordinates: {shoulder_bone_coordinates.y}")
+                # Is this condition true ? plz check it!
+                if wrist_bone_coordinates.y < shoulder_bone_coordinates.y:
+                    self.msgs_pub.publish("success!!")
+                    print("success")
+            else:
+                rospy.logwarn("Required bones not found.")
+                #     if wrist_bone_coordinates.y >shoulder_bone_coordinates.y:
+                # self.msgs_pub.publish("success!!")
+                # print("success")
 
-    
+
     def timerCallback(self,event):
         try:
             self.search_bone()
