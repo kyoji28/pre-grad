@@ -83,6 +83,9 @@ class Move_to_human():
                 # self.msgs_pub.publish("success!!")
                 # print("success")
 
+    def cmd_vel(self):
+        pass
+        # Task 4 if wrist_bone_coordinates.y > shoulder_bone_coordinates.y is true, publish cmd_vel to tello
 
     def timerCallback(self,event):
         try:
