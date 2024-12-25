@@ -76,7 +76,7 @@ class Move_to_human():
                 rospy.loginfo(f"Found wrist bone: {find_wrist_bone_name}, Coordinates: {wrist_bone_coordinates.y}")
                 rospy.loginfo(f"Found shoulder bone: {find_shoulder_bone_name}, Coordinates: {shoulder_bone_coordinates.y}")
                 # Is this condition true ? plz check it!
-                                if wrist_bone_coordinates.y  shoulder_bone_coordinates.y:
+                                if wrist_bone_coordinates.y <  shoulder_bone_coordinates.y:
                     self.handsup_flag = True
                     self.msgs_pub.publish("Hands up")
                     print("Hands up")
