@@ -12,7 +12,9 @@ class Move_to_human():
     def __init__(self):
         self.msgs_pub = rospy.Publisher('chatter', String, queue_size = 10)
         self.skeleton_sub = rospy.Subscriber('/edgetpu_human_pose_estimator/output/skeletons',HumanSkeletonArray, self.skeleton_cb)
+        self.takeoff_pub = rospy.Publisher('/tello/takeoff',Empty, queue_size = 10)
         self.skeletons = HumanSkeletonArray()
+        self.handsup_flag == False:
         self.bone_names = []
         self.bones = []
         self.start = Point()
@@ -74,18 +76,27 @@ class Move_to_human():
                 rospy.loginfo(f"Found wrist bone: {find_wrist_bone_name}, Coordinates: {wrist_bone_coordinates.y}")
                 rospy.loginfo(f"Found shoulder bone: {find_shoulder_bone_name}, Coordinates: {shoulder_bone_coordinates.y}")
                 # Is this condition true ? plz check it!
-                if wrist_bone_coordinates.y < shoulder_bone_coordinates.y:
-                    self.msgs_pub.publish("success!!")
-                    print("success")
+                                if wrist_bone_coordinates.y  shoulder_bone_coordinates.y:
+                    self.handsup_flag = True
+                    self.msgs_pub.publish("Hands up")
+                    print("Hands up")
             else:
                 rospy.logwarn("Required bones not found.")
-                #     if wrist_bone_coordinates.y >shoulder_bone_coordinates.y:
-                # self.msgs_pub.publish("success!!")
-                # print("success")
+                #     if wrist_bone_coordinates.y >shoulder_bone_coordinates.y:                                                                                                                            
+                # self.msgs_pub.publish("success!!")                                                                                                                                                       
+                # print("success")                                                                                                                                                                         
 
     def cmd_vel(self):
         pass
-        # Task 4 if wrist_bone_coordinates.y > shoulder_bone_coordinates.y is true, publish cmd_vel to tello
+        # Task 4 if wrist_bone_coordinates.y > shoulder_bone_coordinates.y is true, publish cmd_vel to tello                                                                                               
+
+
+    def takeoff(self):
+        if self.handsup_flag == True:
+            self.takeoff_pub.publish(Empty())
+            self.handsup_flag = False
+
+
 
     def timerCallback(self,event):
         try:
